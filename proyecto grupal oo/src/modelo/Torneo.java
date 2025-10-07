@@ -12,6 +12,7 @@ public class Torneo {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private List<Equipo> equipos;
+    private List<Partido> lstPartidos;
     
 	public Torneo(int idTorneo, String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
 		super();
@@ -21,6 +22,7 @@ public class Torneo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.equipos = new ArrayList<>();
+		this.lstPartidos = new ArrayList<>();
 	}
 
 	public int getIdTorneo() {
@@ -67,6 +69,10 @@ public class Torneo {
 		return equipos;
 	}
 
+	public List<Partido> getLstPartidos() {
+		return lstPartidos;
+	}
+
 	@Override
 	public String toString() {
     	return 	"ID: " + idTorneo + "\n" +
@@ -74,7 +80,8 @@ public class Torneo {
     			"Temporada: " + temporada + "\n" +
     			"Inicio: " + fechaInicio + "\n" +
     			"Fin: " + fechaFin + "\n" +
-    			"------Equipos Participantes------" + "\n" + equipos + "\n";
+    			"------Equipos Participantes------" + "\n" + equipos + "\n" + 
+    			"------Partidos------" + "\n" + lstPartidos + "\n";
 	}
    	
 }
