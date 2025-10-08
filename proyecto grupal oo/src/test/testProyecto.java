@@ -152,8 +152,26 @@ public class testProyecto {
 			System.out.println(t);
 		}
 		
-
 		
+		System.out.println("--------------EQUIPOS CON AGREGACION DE ENTRENADOR Y JUGADOR--------------");
+		
+		try{
+			sistema.traerEquipo(1).agregarEntrenadorEquipo(sistema.traerEntrenador(11111111));
+			sistema.traerEquipo(2).agregarEntrenadorEquipo(sistema.traerEntrenador(22222222));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		try{
+			sistema.traerEquipo(1).agregarJugadorEquipo(sistema.traerJugador(12121212));
+			sistema.traerEquipo(2).agregarJugadorEquipo(sistema.traerJugador(23232323));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		for(Equipo eq : sistema.getLstEquipos()) {
+			System.out.println(eq);
+		}
 		
 	}
 

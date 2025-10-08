@@ -66,10 +66,19 @@ public class Equipo {
 
     private String generarCodigo(String nombre) {
     	
-    	String codigo = "" + nombre.charAt(0) + nombre.charAt(nombre.length()/2) + nombre.charAt(nombre.length()-1);
+    	char primer = nombre.charAt(0);
+    	char segundo = nombre.charAt(nombre.length()/2);
+    	if(segundo==' ') {
+    	segundo = nombre.charAt((nombre.length()/2)+1);	
+    	}
+    	char tercer = nombre.charAt(nombre.length()-1);
+    	String codigo = "" + primer + segundo + tercer;
+    	
     	
     	return codigo.toUpperCase();
     }
+    
+    //------------------MANEJAR JUGADOR------------------
     
     public boolean agregarJugadorEquipo(Jugador jugador) throws Exception {
     	Jugador jugadorAux=null;
@@ -87,15 +96,46 @@ public class Equipo {
  	   	return lstJugadoresEquipo.add(jugador);
     }
     
+    public boolean eliminarJugadorEquipo(Jugador jugador) throws Exception {
+    	
+    	int i=0;
+    	boolean encontrado=false;
+    	
+    	while(i<lstJugadoresEquipo.size() && encontrado==false) {
+    		if(lstJugadoresEquipo.get(i).getDni()==jugador.getDni()) {
+    			encontrado=true;
+    		}
+    		i++;
+    	}
+    	
+    	if(encontrado==true) throw new Exception("ERROR: El jugador no se encuentra dentro de la lista del equipo");
+    	
+    	return lstJugadoresEquipo.remove(jugador);
+    }
+    
+  //------------------MANEJAR ENTRENADOR------------------
+    
     public boolean agregarEntrenadorEquipo(Entrenador entrenador) throws Exception {
     	
-    	if(this.entrenador.getDni()==entrenador.getDni()) throw new Exception("ERROR: El entrenador ya pertenece al equipo");
+    	if(this.entrenador!=null) throw new Exception("ERROR: El equipo ya tiene un entrenador");
     	
     	setEntrenador(entrenador);
     	
     	return true;
     }
     
+    public boolean eliminarEntrenadorEquipo(Entrenador entrenador) throws Exception {
+    	
+    	if(getEntrenador().getDni()==entrenador.getDni()) throw new Exception("ERROR: El entrenador no pertenece al equipo");
+    	
+    	this.entrenador=null;
+    	
+    	return true;
+    	
+    }
+    
+    
+    //--------------OTROS--------------
     @Override
     public String toString() {
     	return	"ID: " + idEquipo + "\n" +
