@@ -174,6 +174,19 @@ public class testProyecto {
 			System.out.println(eq);
 		}
 		
+		//-------------------------------------------- TEST 8--------------------------------------------------------------
+		
+		System.out.println("\n");
+		System.out.println("Altura Promedio del Equipo - ID " + sistema.traerEquipo(1).getIdEquipo() + " - : " + String.format("%.2f", sistema.traerEquipo(1).calcularAlturaPromedio()));
+		
+		
+		//-------------------------------------------- TEST 9--------------------------------------------------------------
+		System.out.println("\n");
+		System.out.println("--------------EQUIPO CON MAYOR ALTURA PROMEDIO--------------");
+		System.out.println(sistema.traerEquipoMayorAlturaPromedio());
+
+		
+		//------------------------------------------------------------------------------------------------------------------
 		try{
 			sistema.traerEquipo(1).eliminarEntrenadorEquipo(sistema.traerEntrenador(11111111));
 			sistema.traerEquipo(2).eliminarEntrenadorEquipo(sistema.traerEntrenador(22222222));
@@ -221,6 +234,11 @@ public class testProyecto {
 		for (Equipo eq : equiposAntiguos) {
 		    System.out.println(eq);
 		}
+		
+		
+
+		
+		
 		
 	}
 

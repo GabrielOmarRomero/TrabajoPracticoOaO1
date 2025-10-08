@@ -365,5 +365,25 @@ public class Sistema {
 	}
 
    
+	 //------------------CASO DE USO 9------------------
+	   public Equipo traerEquipoMayorAlturaPromedio() {
+	       if (lstEquipos == null || lstEquipos.isEmpty()) {
+	           return null;
+	       }
+	
+	       Equipo equipoMayorPromedio = null;
+	       double mayorPromedio = 0;
+	
+	       for (Equipo e : lstEquipos) {
+	           double promedio = e.calcularAlturaPromedio();
+	           if (equipoMayorPromedio == null || promedio > mayorPromedio) {
+	               equipoMayorPromedio = e;
+	               mayorPromedio = promedio;
+	           }
+	       }
+	
+	       return equipoMayorPromedio;
+	   }
+   
       
 }

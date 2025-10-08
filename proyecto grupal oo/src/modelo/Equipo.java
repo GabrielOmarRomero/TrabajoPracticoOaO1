@@ -134,6 +134,21 @@ public class Equipo {
     	
     }
     
+	//------------------CASO DE USO 8------------------
+	    
+	    public double calcularAlturaPromedio() {
+	        if (lstJugadoresEquipo == null || lstJugadoresEquipo.isEmpty()) {
+	            return 0;
+	        }
+	
+	        double sumaAlturas = 0;
+	        for (Jugador j : lstJugadoresEquipo) {
+	            sumaAlturas += j.getEstatura();
+	        }
+	
+	        return sumaAlturas / lstJugadoresEquipo.size();
+	    }
+    
     
     //--------------OTROS--------------
     @Override
