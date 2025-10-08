@@ -326,5 +326,44 @@ public class Sistema {
 	   return true;
    }
    
+//----------------------- caso de uso 5: buscar entrenador por tactica -------------------------------------------
+   
+   public List<Entrenador> traerEntrenadoresPorTactica(String tactica) {
+	    List<Entrenador> resultado = new ArrayList<>();
+	    for (Entrenador e : lstEntrenadores) {
+	        if (e.getEstrategiaFavorita().equalsIgnoreCase(tactica)) {
+	            resultado.add(e);
+	        }
+	    }
+	    return resultado;
+	}
+   
+   //---------------------------- caso de uso 6: buscar por entre dos fechas -----------------------------------------
+   
+   public List<Jugador> traerJugadoresPorRangoDeNacimiento(LocalDate desde, LocalDate hasta) {
+	    List<Jugador> resultado = new ArrayList<>();
+	    for (Jugador j : lstJugadores) {
+	        LocalDate fn = j.getFechaNacimiento();
+	        if ((fn.isEqual(desde) || fn.isAfter(desde)) && 
+	            (fn.isEqual(hasta) || fn.isBefore(hasta))) {
+	            resultado.add(j);
+	        }
+	    }
+	    return resultado;
+	}
+   
+   //--------------------------------- caso de uso 7: equipos fundados antes de una fecha --------------------------------
+   
+   public List<Equipo> traerEquiposFundadosAntesDe(LocalDate fecha) {
+	    List<Equipo> resultado = new ArrayList<>();
+	    for (Equipo e : lstEquipos) {
+	        if (e.getFechaFundacion().isBefore(fecha)) {
+	            resultado.add(e);
+	        }
+	    }
+	    return resultado;
+	}
+
+   
       
 }

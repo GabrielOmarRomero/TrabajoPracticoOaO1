@@ -1,6 +1,7 @@
 package test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import modelo.Entrenador;
 import modelo.Equipo;
@@ -191,6 +192,34 @@ public class testProyecto {
 		
 		for(Equipo eq : sistema.getLstEquipos()) {
 			System.out.println(eq);
+		}
+		
+		//-------------------------------------- test 5 ------------------------------------------------------
+		
+		System.out.println("---------------BUSCAR ENTRENADORES POR TÁCTICA--------------");
+		
+		List<Entrenador> entrenadoresTactica = sistema.traerEntrenadoresPorTactica("Linea de 5");
+		for (Entrenador e : entrenadoresTactica) {
+		    System.out.println(e);
+		}
+		
+		//--------------------------------------- test 6 ----------------------------------------------------------
+		
+		System.out.println("----------------BUSCAR JUGADORES NACIDOS ENTRE DOS FECHAS--------------");
+		LocalDate desde = LocalDate.of(1999, 1, 1);
+		LocalDate hasta = LocalDate.of(2002, 12, 31);
+		List<Jugador> jugadoresEntreFechas = sistema.traerJugadoresPorRangoDeNacimiento(desde, hasta);
+		for (Jugador j : jugadoresEntreFechas) {
+		    System.out.println(j);
+		}
+		
+		//------------------------------------------- test 7 -----------------------------------------------------------
+		
+		System.out.println("--------------BUSCAR EQUIPOS FUNDADOS ANTES DE UNA FECHA--------------");
+		LocalDate fechaLimite = LocalDate.of(1905, 1, 1);
+		List<Equipo> equiposAntiguos = sistema.traerEquiposFundadosAntesDe(fechaLimite);
+		for (Equipo eq : equiposAntiguos) {
+		    System.out.println(eq);
 		}
 		
 	}
