@@ -83,5 +83,5 @@ public class Torneo {
     			"------Equipos Participantes------" + "\n" + equipos + "\n" + 
     			"------Partidos------" + "\n" + lstPartidos + "\n";
 	}
-   	
+	
 }

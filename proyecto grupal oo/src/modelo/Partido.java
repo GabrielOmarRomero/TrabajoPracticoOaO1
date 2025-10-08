@@ -10,11 +10,9 @@ public class Partido {
     private Equipo local;
     private Equipo visitante;
     private String estadio;
-    private int golesLocal;
-    private int golesVisitante;
     
 	public Partido(int idPartido, LocalDateTime fechahora, int fechaJornada, Equipo local, Equipo visitante,
-			String estadio, int golesLocal, int golesVisitante) {
+			String estadio) {
 		super();
 		this.idPartido = idPartido;
 		this.fechahora = fechahora;
@@ -22,8 +20,6 @@ public class Partido {
 		this.local = local;
 		this.visitante = visitante;
 		this.estadio = estadio;
-		this.golesLocal = golesLocal;
-		this.golesVisitante = golesVisitante;
 	}
 
 	public int getIdPartido() {
@@ -74,21 +70,12 @@ public class Partido {
 		this.estadio = estadio;
 	}
 
-	public int getGolesLocal() {
-		return golesLocal;
+	@Override
+	public String toString() {
+		return 	"ID: "+ idPartido + "\n" +
+				"Fecha y hora del encuentro: " + fechahora + "\n"+ 
+				"--->"+ local + " VS " + visitante + "\n" + 
+				"Estadio: " + estadio;
 	}
-
-	public void setGolesLocal(int golesLocal) {
-		this.golesLocal = golesLocal;
-	}
-
-	public int getGolesVisitante() {
-		return golesVisitante;
-	}
-
-	public void setGolesVisitante(int golesVisitante) {
-		this.golesVisitante = golesVisitante;
-	}
-    
 
 }
