@@ -74,6 +74,7 @@ public class Partido {
 	public String toString() {
 		return 	"ID: "+ idPartido + "\n" +
 				"Fecha y hora del encuentro: " + fechahora + "\n"+ 
+				"Fecha de Jornada: " + fechaJornada + "\n"+
 				"--->"+ local + " VS " + visitante + "\n" + 
 				"Estadio: " + estadio;
 	}
