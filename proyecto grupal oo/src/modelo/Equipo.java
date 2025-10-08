@@ -108,7 +108,7 @@ public class Equipo {
     		i++;
     	}
     	
-    	if(encontrado==true) throw new Exception("ERROR: El jugador no se encuentra dentro de la lista del equipo");
+    	if(encontrado==false) throw new Exception("ERROR: El jugador no se encuentra dentro de la lista del equipo");
     	
     	return lstJugadoresEquipo.remove(jugador);
     }
@@ -126,7 +126,7 @@ public class Equipo {
     
     public boolean eliminarEntrenadorEquipo(Entrenador entrenador) throws Exception {
     	
-    	if(getEntrenador().getDni()==entrenador.getDni()) throw new Exception("ERROR: El entrenador no pertenece al equipo");
+    	if(this.entrenador==null || this.entrenador.getDni()!=entrenador.getDni()) throw new Exception("ERROR: El entrenador no pertenece al equipo");
     	
     	this.entrenador=null;
     	

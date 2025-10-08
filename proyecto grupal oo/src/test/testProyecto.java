@@ -173,6 +173,26 @@ public class testProyecto {
 			System.out.println(eq);
 		}
 		
+		try{
+			sistema.traerEquipo(1).eliminarEntrenadorEquipo(sistema.traerEntrenador(11111111));
+			sistema.traerEquipo(2).eliminarEntrenadorEquipo(sistema.traerEntrenador(22222222));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		try{
+			sistema.traerEquipo(1).eliminarJugadorEquipo(sistema.traerJugador(12121212));
+			sistema.traerEquipo(2).eliminarJugadorEquipo(sistema.traerJugador(23232323));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println("--------------EQUIPOS CON ELIMINACION DE ENTRENADOR Y JUGADOR--------------");
+		
+		for(Equipo eq : sistema.getLstEquipos()) {
+			System.out.println(eq);
+		}
+		
 	}
 
 }
