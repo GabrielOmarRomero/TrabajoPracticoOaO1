@@ -80,35 +80,32 @@ public class Equipo {
     
     //------------------MANEJAR JUGADOR------------------
     
-    public boolean agregarJugadorEquipo(Jugador jugador) throws Exception {
-    	Jugador jugadorAux=null;
+    public Jugador traerJugador(long dni) {
+    	
+    	Jugador jugador=null;
     	int i=0;
     	
-    	while(i<lstJugadoresEquipo.size() && jugadorAux==null) {
-    		if(lstJugadoresEquipo.get(i).getDni()==jugador.getDni()) {
-    			jugadorAux=lstJugadoresEquipo.get(i);
+    	while(i<lstJugadoresEquipo.size() && jugador==null) {
+    		if(lstJugadoresEquipo.get(i).getDni()==dni) {
+    			jugador=lstJugadoresEquipo.get(i);
     		}
     		i++;
     	}
+    	return jugador;
+    }
+    
+    public boolean agregarJugadorEquipo(Jugador jugador) throws Exception {
     	
+    	Jugador jugadorAux=traerJugador(jugador.getDni());
     	if(jugadorAux!=null) throw new Exception("ERROR: El jugador ya pertenece al equipo");
     	
- 	   	return lstJugadoresEquipo.add(jugador);
+ 	   	return lstJugadoresEquipo.add(jugadorAux);
     }
     
     public boolean eliminarJugadorEquipo(Jugador jugador) throws Exception {
     	
-    	int i=0;
-    	boolean encontrado=false;
-    	
-    	while(i<lstJugadoresEquipo.size() && encontrado==false) {
-    		if(lstJugadoresEquipo.get(i).getDni()==jugador.getDni()) {
-    			encontrado=true;
-    		}
-    		i++;
-    	}
-    	
-    	if(encontrado==false) throw new Exception("ERROR: El jugador no se encuentra dentro de la lista del equipo");
+    	Jugador jugadorAux=traerJugador(jugador.getDni());
+    	if(jugadorAux==null) throw new Exception("ERROR: El jugador no pertenece al equipo");
     	
     	return lstJugadoresEquipo.remove(jugador);
     }
