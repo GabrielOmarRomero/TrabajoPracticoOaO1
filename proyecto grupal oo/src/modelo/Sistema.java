@@ -57,7 +57,7 @@ public class Sistema {
 		
 		int id=1;
 		if(!lstEntrenadores.isEmpty()) {
-			id=lstEntrenadores.get(lstEntrenadores.size()-1).getIdEntrenador()+1;
+			id=lstEntrenadores.get(lstEntrenadores.size()-1).getId()+1;
 		}
 		
 		return lstEntrenadores.add(new Entrenador(id, nombre, apellido, dni, fechaNacimiento, estrategiaFav));
@@ -123,7 +123,7 @@ public class Sistema {
 		
 		int id = 1;
 		if(!lstJugadores.isEmpty()) {
-			id = lstJugadores.get(lstJugadores.size()-1).getIdJugador()+1;
+			id = lstJugadores.get(lstJugadores.size()-1).getId()+1;
 		}
 		
 		return lstJugadores.add(new Jugador(id, nombre, apellido, dni, fechaNacimiento, estatura, peso, posicion, numeroCamiseta));
