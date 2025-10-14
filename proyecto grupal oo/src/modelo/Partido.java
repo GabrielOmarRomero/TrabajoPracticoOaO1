@@ -72,11 +72,11 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return 	"ID: "+ idPartido + "\n" +
+		return 	"\n" + "ID: "+ idPartido + "\n" +
 				"Fecha y hora del encuentro: " + fechahora + "\n"+ 
 				"Fecha de Jornada: " + fechaJornada + "\n"+
-				"--->"+ local + " VS " + visitante + "\n" + 
-				"Estadio: " + estadio;
+				"*****"+ local.getNombre() + " VS " + visitante.getNombre() + "*****" + "\n" + 
+				"Estadio: " + estadio + "\n";
 	}
 
 }

@@ -1,11 +1,14 @@
 package test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import modelo.Entrenador;
 import modelo.Equipo;
 import modelo.Jugador;
+import modelo.Registro;
 import modelo.Sistema;
 import modelo.Torneo;
 
@@ -22,8 +25,7 @@ public class testProyecto {
 			//modificar:
 			sistema.agregarEntrenador("Lucas", "Rodriguez", 22222222, LocalDate.of(1988, 10, 18), "Linea de 4");
 			//eliminar:
-			sistema.agregarEntrenador("Thomas", "Castro", 33333333, LocalDate.of(1987, 1, 11), "Linea de 4");
-			
+			sistema.agregarEntrenador("Thomas", "Castro", 33333333, LocalDate.of(1987, 1, 11), "Linea de 4");			
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -58,6 +60,9 @@ public class testProyecto {
 			sistema.agregarJugador("Agustin", "Menendez", 23232323, LocalDate.of(2002, 9, 21), 1.73f, 71f, "Defensor", 8);
 			//elimininar:
 			sistema.agregarJugador("Hector", "Borges", 34343434, LocalDate.of(2003, 11, 30), 1.73f, 71f, "Defensor", 16);
+			
+			sistema.agregarJugador("Hector", "Borges", 45454545, LocalDate.of(2001, 12, 30), 1.83f, 76f, "Delantero", 6);
+			sistema.agregarJugador("Hector", "Borges", 56565656, LocalDate.of(2000, 3, 3), 1.63f, 74f, "Delantero", 10);
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -103,7 +108,7 @@ public class testProyecto {
 		}
 		
 		try{
-			sistema.modificarEquipo(2, "Equipo Azul", LocalDate.of(1910, 12, 7));
+			sistema.modificarEquipo(3, "Equipo Azul", LocalDate.of(1910, 12, 7));
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -175,16 +180,22 @@ public class testProyecto {
 		}
 		
 		//-------------------------------------------- TEST 8--------------------------------------------------------------
-		
+		try {
 		System.out.println("\n");
 		System.out.println("Altura Promedio del Equipo - ID " + sistema.traerEquipo(1).getIdEquipo() + " - : " + String.format("%.2f", sistema.traerEquipo(1).calcularAlturaPromedio()));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
 		
 		//-------------------------------------------- TEST 9--------------------------------------------------------------
 		System.out.println("\n");
 		System.out.println("--------------EQUIPO CON MAYOR ALTURA PROMEDIO--------------");
+		try {
 		System.out.println(sistema.traerEquipoMayorAlturaPromedio());
-
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
 		//------------------------------------------------------------------------------------------------------------------
 		try{
@@ -235,10 +246,45 @@ public class testProyecto {
 		    System.out.println(eq);
 		}
 		
+		//------------------------------------------- TESTEO PARTIDOS -----------------------------------------------------------
 		
-
+		try {
+			sistema.traerTorneo(1).agregarEquipo(sistema.traerEquipo(1));
+			sistema.traerTorneo(1).agregarEquipo(sistema.traerEquipo(2));
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 		
 		
+		try {
+			sistema.traerTorneo(1).agregarPartido(LocalDateTime.of(LocalDate.of(2026, 2, 4), LocalTime.of(20, 30)), 1, sistema.traerEquipo(1), sistema.traerEquipo(2), "Estadio Alberto J. Armando");
+			sistema.traerTorneo(1).agregarPartido(LocalDateTime.of(LocalDate.of(2026, 3, 6), LocalTime.of(21, 30)), 2, sistema.traerEquipo(1), sistema.traerEquipo(2), "Mâs Monumental");
+			sistema.traerTorneo(1).agregarPartido(LocalDateTime.of(LocalDate.of(2026, 4, 7), LocalTime.of(22, 00)), 3, sistema.traerEquipo(1), sistema.traerEquipo(2), "Mario Alberto Kempes");
+			sistema.traerTorneo(1).agregarPartido(LocalDateTime.of(LocalDate.of(2026, 5, 14), LocalTime.of(10, 15)), 4, sistema.traerEquipo(1), sistema.traerEquipo(2), "Único Diego Armando Maradona");
+			sistema.traerTorneo(1).agregarPartido(LocalDateTime.of(LocalDate.of(2026, 6, 17), LocalTime.of(23, 30)), 5, sistema.traerEquipo(1), sistema.traerEquipo(2), "Libertadores de América - Ricardo Enrique Bochini");
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println("--------------TORNEOS (POST AGREGAR EQUIPOS Y PARTIDOS)--------------");
+		for(Torneo t : sistema.getLstTorneos()) {
+			System.out.println(t);
+		}
+		
+		try {
+			sistema.agregarRegistro(sistema.traerJugador(12121212), 10, 2, LocalTime.of(1, 30), sistema.traerTorneo(1).traerPartido(1));
+			sistema.agregarRegistro(sistema.traerJugador(23232323), 0, 5, LocalTime.of(1, 30), sistema.traerTorneo(1).traerPartido(2));
+			sistema.agregarRegistro(sistema.traerJugador(45454545), 3, 1, LocalTime.of(0, 30), sistema.traerTorneo(1).traerPartido(3));
+			sistema.agregarRegistro(sistema.traerJugador(56565656), 6, 3, LocalTime.of(0, 40), sistema.traerTorneo(1).traerPartido(4));
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println("\n");
+		System.out.println("--------------REGISTROS--------------");
+		for(Registro r : sistema.getLstRegistros()) {
+			System.out.println(r);
+		}
 		
 	}
 

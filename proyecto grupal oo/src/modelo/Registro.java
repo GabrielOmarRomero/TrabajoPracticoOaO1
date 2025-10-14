@@ -69,7 +69,7 @@ public class Registro {
 	@Override
 	public String toString() {
 		return 	"ID: " + idRegistro + "\n"+
-				"-----Jugador-----" + jugador + "\n"+
+				"-----Jugador-----" + "\n" + jugador + "\n"+
 				"CANTIDAD DE GOLES-->" + goles + "\n"+
 				"CANTIDAD DE ASISTENCIAS-->" + asistencias + "\n"+
 				"TIEMPO DE JUEGO: " + minutosJugados + "\n"+

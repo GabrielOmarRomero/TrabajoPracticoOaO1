@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class Sistema {
 	private List<Jugador> lstJugadores;
 	private List<Equipo> lstEquipos;
 	private List<Torneo> lstTorneos;
+	private List<Registro> lstRegistros;
 	
 	public Sistema() {
 		super();
@@ -17,6 +19,7 @@ public class Sistema {
 		this.lstJugadores = new ArrayList<>();
 		this.lstEquipos = new ArrayList<>();
 		this.lstTorneos = new ArrayList<>();
+		this.lstRegistros = new ArrayList<>();
 	}
 
 	public List<Entrenador> getLstEntrenadores() {
@@ -33,6 +36,10 @@ public class Sistema {
 
 	public List<Torneo> getLstTorneos() {
 		return lstTorneos;
+	}
+	
+	public List<Registro> getLstRegistros() {
+		return lstRegistros;
 	}
 
 	//----------------------------------------------------ENTRENADOR-----------------------------------------------------------------	
@@ -385,5 +392,59 @@ public class Sistema {
 	       return equipoMayorPromedio;
 	   }
    
-      
+	//----------------------------------------------------REGISTRO-----------------------------------------------------------------
+	   
+	   public Registro traerRegistro(int id) {
+		   
+		   Registro registro = null;
+	    	int i=0;
+	    	
+	    	while(i<lstRegistros.size() && registro==null) {
+	    		if(lstRegistros.get(i).getIdRegistro()==id) {
+	    			registro=lstRegistros.get(i);
+	    		}
+	    		i++;
+	    	}
+	    	return registro;
+	    	
+	   }
+	   
+	   public boolean agregarRegistro(Jugador jugador, int goles, int asistencias, LocalTime minutosJugados, Partido partido) {
+		     
+		   int id=1;
+		   if(!lstRegistros.isEmpty()) {
+			   id=lstRegistros.get(lstRegistros.size()-1).getIdRegistro()+1;
+		   }
+		   
+		   return lstRegistros.add(new Registro(id, jugador, goles, asistencias, minutosJugados, partido));
+		   
+	   }
+	   
+	   public boolean eliminarRegistro(int id) throws Exception {
+		   
+		   Registro registro=traerRegistro(id);
+		   if(registro==null) throw new Exception("ERROR: El registro que desea eliminar no existe");
+		   
+		   return lstRegistros.remove(registro);
+		   
+	   }
+	   
+	   public boolean modificarRegistro(int id, Jugador jugador, int goles, int asistencias, LocalTime minutosJugados, Partido partido) throws Exception {
+		   
+		   Registro registro=traerRegistro(id);
+		   if(registro==null) throw new Exception("ERROR: El registro que desea modificar no existe");
+		   
+		   registro.setJugador(jugador);
+		   registro.setGoles(goles);
+		   registro.setAsistencias(asistencias);
+		   registro.setMinutosJugados(minutosJugados);
+		   registro.setPartido(partido);
+		   return true;
+		   
+	   }
+	   
+	   
+	   
+	   
+	   
 }
