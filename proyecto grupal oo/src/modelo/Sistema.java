@@ -12,6 +12,7 @@ public class Sistema {
 	private List<Equipo> lstEquipos;
 	private List<Torneo> lstTorneos;
 	private List<Registro> lstRegistros;
+	private List<Persona> lstPersonas;
 	
 	public Sistema() {
 		super();

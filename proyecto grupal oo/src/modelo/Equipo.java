@@ -99,7 +99,7 @@ public class Equipo {
     	Jugador jugadorAux=traerJugador(jugador.getDni());
     	if(jugadorAux!=null) throw new Exception("ERROR: El jugador ya pertenece al equipo");
     	
- 	   	return lstJugadoresEquipo.add(jugadorAux);
+ 	   	return lstJugadoresEquipo.add(jugador);
     }
     
     public boolean eliminarJugadorEquipo(Jugador jugador) throws Exception {
@@ -107,7 +107,7 @@ public class Equipo {
     	Jugador jugadorAux=traerJugador(jugador.getDni());
     	if(jugadorAux==null) throw new Exception("ERROR: El jugador no pertenece al equipo");
     	
-    	return lstJugadoresEquipo.remove(jugador);
+    	return lstJugadoresEquipo.remove(jugadorAux);
     }
     
   //------------------MANEJAR ENTRENADOR------------------
