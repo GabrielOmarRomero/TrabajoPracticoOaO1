@@ -507,5 +507,43 @@ public class Sistema {
 		   
 		   return asistidores;
 		   
-	   }  
+	   }
+	   
+	   //----------------- caso de uso 4 -------------------------
+	   
+	   public List<Ganador> traerGanadoresPorFecha(Torneo torneo, int numeroFecha) throws Exception {
+		    if(torneo == null) throw new Exception("ERROR: Torneo no existe");
+
+		    List<Ganador> ganadores = new ArrayList<>();
+
+		    List<Partido> partidos = torneo.traerPartidosPorFecha(numeroFecha); 
+		    if(partidos.isEmpty()) throw new Exception("No hay partidos en la fecha indicada");
+
+		    for(Partido p : partidos) {
+		        Equipo ganador = null;
+		        int golesGanador = 0;
+
+		        int golesLocal = p.getGolesLocal();
+		        int golesVisitante = p.getGolesVisitante();
+
+		        if(golesLocal > golesVisitante) {
+		            ganador = p.getLocal();
+		            golesGanador = golesLocal;
+		        } else if(golesVisitante > golesLocal) {
+		            ganador = p.getVisitante();
+		            golesGanador = golesVisitante;
+		        }
+
+		        if(ganador != null) {
+		            ganadores.add(new Ganador(p.getFechahora().toLocalDate(), ganador, golesGanador));
+		        }
+		    }
+
+		    return ganadores;
+		}
+	   
+	   
+	   
+	   
+  
 }

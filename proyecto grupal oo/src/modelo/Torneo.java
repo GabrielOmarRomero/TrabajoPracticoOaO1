@@ -164,5 +164,18 @@ public class Torneo {
 		return equipos.remove(equipoAux);
 	}
 	
+	//--------------------- partido por fecha -----------------------------
+	
+	
+	public List<Partido> traerPartidosPorFecha(int fechaJornada) {
+	    List<Partido> partidosPorFecha = new ArrayList<>();
+	    for (Partido p : lstPartidos) {
+	        if (p.getFechaJornada() == fechaJornada) {
+	            partidosPorFecha.add(p);
+	        }
+	    }
+	    return partidosPorFecha;
+	}
+	
 	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import modelo.Entrenador;
 import modelo.Equipo;
+import modelo.Ganador;
 import modelo.Jugador;
 import modelo.Registro;
 import modelo.Sistema;
@@ -266,6 +267,26 @@ public class testProyecto {
 			System.out.println(e);
 		}
 		
+		try {
+		    sistema.traerTorneo(1).traerPartido(1).setGolesLocal(10);
+		    sistema.traerTorneo(1).traerPartido(1).setGolesVisitante(8);
+
+		    sistema.traerTorneo(1).traerPartido(2).setGolesLocal(2);
+		    sistema.traerTorneo(1).traerPartido(2).setGolesVisitante(3);
+
+		    sistema.traerTorneo(1).traerPartido(3).setGolesLocal(3);
+		    sistema.traerTorneo(1).traerPartido(3).setGolesVisitante(1);
+
+		    sistema.traerTorneo(1).traerPartido(4).setGolesLocal(6);
+		    sistema.traerTorneo(1).traerPartido(4).setGolesVisitante(2);
+
+		    sistema.traerTorneo(1).traerPartido(5).setGolesLocal(0);
+		    sistema.traerTorneo(1).traerPartido(5).setGolesVisitante(0);
+		} catch(Exception e) {
+		    System.out.println(e);
+		}
+		
+		
 		System.out.println("--------------TORNEOS (POST AGREGAR EQUIPOS Y PARTIDOS)--------------");
 		for(Torneo t : sistema.getLstTorneos()) {
 			System.out.println(t);
@@ -331,7 +352,23 @@ public class testProyecto {
 		}
 		
 		
-		
+		//-------------------------------------- test caso de uso 4 ------------------------------------------------------
+		System.out.println("\n");
+		System.out.println("--------------ganadores por fecha--------------");
+
+		try {
+		    List<Ganador> ganadores = sistema.traerGanadoresPorFecha(sistema.traerTorneo(1), 1);
+
+		    for (Ganador g : ganadores) {
+		        System.out.println("Fecha: " + g.getFecha() 
+		                           + " | Ganador: " + g.getEquipoGanador().getNombre() 
+		                           + " | Goles: " + g.getCantidadGoles());
+		    }
+
+		} catch (Exception e) {
+		    System.out.println(e);
+		}
 	}
+		
 
 }

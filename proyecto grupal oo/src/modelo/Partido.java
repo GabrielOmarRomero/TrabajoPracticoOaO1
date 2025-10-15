@@ -10,6 +10,8 @@ public class Partido {
     private Equipo local;
     private Equipo visitante;
     private String estadio;
+    private int golesLocal;
+    private int golesVisitante;
     
 	public Partido(int idPartido, LocalDateTime fechahora, int fechaJornada, Equipo local, Equipo visitante,
 			String estadio) {
@@ -68,6 +70,22 @@ public class Partido {
 
 	public void setEstadio(String estadio) {
 		this.estadio = estadio;
+	}
+	
+	public int getGolesLocal() {
+	    return golesLocal;
+	}
+
+	public void setGolesLocal(int golesLocal) {
+	    this.golesLocal = golesLocal;
+	}
+
+	public int getGolesVisitante() {
+	    return golesVisitante;
+	}
+
+	public void setGolesVisitante(int golesVisitante) {
+	    this.golesVisitante = golesVisitante;
 	}
 
 	@Override
