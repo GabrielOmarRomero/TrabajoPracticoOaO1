@@ -61,8 +61,8 @@ public class testProyecto {
 			//elimininar:
 			sistema.agregarJugador("Hector", "Borges", 34343434, LocalDate.of(2003, 11, 30), 1.73f, 71f, "Defensor", 16);
 			
-			sistema.agregarJugador("Hector", "Borges", 45454545, LocalDate.of(2001, 12, 30), 1.83f, 76f, "Delantero", 6);
-			sistema.agregarJugador("Hector", "Borges", 56565656, LocalDate.of(2000, 3, 3), 1.63f, 74f, "Delantero", 10);
+			sistema.agregarJugador("Damian", "Soprano", 45454545, LocalDate.of(2001, 12, 30), 1.83f, 76f, "Delantero", 6);
+			sistema.agregarJugador("Samuel", "Paggani", 56565656, LocalDate.of(2000, 3, 3), 1.63f, 74f, "Delantero", 10);
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -273,6 +273,7 @@ public class testProyecto {
 		
 		try {
 			sistema.agregarRegistro(sistema.traerJugador(12121212), 10, 2, LocalTime.of(1, 30), sistema.traerTorneo(1).traerPartido(1));
+			sistema.agregarRegistro(sistema.traerJugador(12121212), 2, 3, LocalTime.of(1, 30), sistema.traerTorneo(1).traerPartido(2));
 			sistema.agregarRegistro(sistema.traerJugador(23232323), 0, 5, LocalTime.of(1, 30), sistema.traerTorneo(1).traerPartido(2));
 			sistema.agregarRegistro(sistema.traerJugador(45454545), 3, 1, LocalTime.of(0, 30), sistema.traerTorneo(1).traerPartido(3));
 			sistema.agregarRegistro(sistema.traerJugador(56565656), 6, 3, LocalTime.of(0, 40), sistema.traerTorneo(1).traerPartido(4));
@@ -285,6 +286,51 @@ public class testProyecto {
 		for(Registro r : sistema.getLstRegistros()) {
 			System.out.println(r);
 		}
+		
+		//-----------------------test caso de uso 12---------------------
+		System.out.println("\n");
+		System.out.println("--------------JUGADORES CANTIDAD DE GOLES--------------");
+		try {
+			System.out.println("Jugador: " + sistema.traerJugador(12121212).getApellido() + ", " + sistema.traerJugador(12121212).getNombre() + " | Cantidad de goles: " + sistema.calcularGolesJugador(sistema.traerJugador(12121212)));
+			System.out.println("Jugador: " + sistema.traerJugador(23232323).getApellido() + ", " + sistema.traerJugador(23232323).getNombre() + " | Cantidad de goles: " + sistema.calcularGolesJugador(sistema.traerJugador(23232323)));
+			System.out.println("Jugador: " + sistema.traerJugador(45454545).getApellido() + ", " + sistema.traerJugador(45454545).getNombre() + " | Cantidad de goles: " + sistema.calcularGolesJugador(sistema.traerJugador(45454545)));
+			System.out.println("Jugador: " + sistema.traerJugador(56565656).getApellido() + ", " + sistema.traerJugador(56565656).getNombre() + " | Cantidad de goles: " + sistema.calcularGolesJugador(sistema.traerJugador(56565656)));
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		//-----------------------test caso de uso 13---------------------
+		System.out.println("\n");
+		System.out.println("--------------JUGADORES CANTIDAD DE ASISTENCIAS--------------");
+		try {
+			System.out.println("Jugador: " + sistema.traerJugador(12121212).getApellido() + ", " + sistema.traerJugador(12121212).getNombre() + " | Cantidad de goles: " + sistema.calcularAsistenciasJugador(sistema.traerJugador(12121212)));
+			System.out.println("Jugador: " + sistema.traerJugador(23232323).getApellido() + ", " + sistema.traerJugador(23232323).getNombre() + " | Cantidad de goles: " + sistema.calcularAsistenciasJugador(sistema.traerJugador(23232323)));
+			System.out.println("Jugador: " + sistema.traerJugador(45454545).getApellido() + ", " + sistema.traerJugador(45454545).getNombre() + " | Cantidad de goles: " + sistema.calcularAsistenciasJugador(sistema.traerJugador(45454545)));
+			System.out.println("Jugador: " + sistema.traerJugador(56565656).getApellido() + ", " + sistema.traerJugador(56565656).getNombre() + " | Cantidad de goles: " + sistema.calcularAsistenciasJugador(sistema.traerJugador(56565656)));
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		//-----------------------test caso de uso 14---------------------
+		System.out.println("\n");
+		System.out.println("--------------TABLA DE GOLEADORES--------------");
+		try {
+			System.out.println(sistema.tablaGoleadores());
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		//-----------------------test caso de uso 15---------------------
+		
+		System.out.println("\n");
+		System.out.println("--------------TABLA DE ASISTIDORES--------------");
+		try {
+			System.out.println(sistema.tablaAsistidores());
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
 		
 	}
 

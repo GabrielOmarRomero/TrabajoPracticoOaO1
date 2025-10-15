@@ -443,8 +443,68 @@ public class Sistema {
 		   
 	   }
 	   
+	   //----------------- caso de uso 12 -------------------------
 	   
+	   public int calcularGolesJugador(Jugador jugador) throws Exception {
+		   Jugador jugadorAux = traerJugador(jugador.getDni());
+		   if(jugadorAux==null) throw new Exception("ERROR: El jugador no tiene registros");
+		   
+		   int contador=0;
+		   for(int i=0; i<lstRegistros.size(); i++) {
+			   if(lstRegistros.get(i).getJugador().getDni()==jugador.getDni()) {
+				   contador+=lstRegistros.get(i).getGoles();
+			   }
+		   }
+		   
+		   return contador;
+		   
+	   }
 	   
+	   //----------------- caso de uso 13 -------------------------
 	   
+	   public int calcularAsistenciasJugador(Jugador jugador) throws Exception {
+		   Jugador jugadorAux = traerJugador(jugador.getDni());
+		   if(jugadorAux==null) throw new Exception("ERROR: El jugador no tiene registros");
+		   
+		   int contador=0;
+		   for(int i=0; i<lstRegistros.size(); i++) {
+			   if(lstRegistros.get(i).getJugador().getDni()==jugador.getDni()) {
+				   contador+=lstRegistros.get(i).getAsistencias();
+			   }
+		   }
+		   
+		   return contador;
+		   
+	   }
 	   
+	 //----------------- caso de uso 14 -------------------------
+	   
+	   public List<Goleador> tablaGoleadores() throws Exception{
+		   
+		   List<Goleador> goleadores = new ArrayList<>();
+		   
+		   for(int i=0; i<lstJugadores.size(); i++) {
+			   goleadores.add(new Goleador(lstJugadores.get(i), calcularGolesJugador(lstJugadores.get(i))));
+		   }
+		   
+		   goleadores.sort((g1, g2) -> Integer.compare(g2.getGoles(), g1.getGoles()));
+		   
+		   return goleadores;
+		   
+	   }
+	   
+	 //----------------- caso de uso 15 -------------------------
+	   
+	   public List<Asistidor> tablaAsistidores() throws Exception{
+		   
+		   List<Asistidor> asistidores = new ArrayList<>();
+		   for(int i=0; i<lstJugadores.size(); i++) {
+			   asistidores.add(new Asistidor(lstJugadores.get(i), calcularAsistenciasJugador(lstJugadores.get(i))));
+		   }
+		   
+		   asistidores.sort((g1, g2) -> Integer.compare(g2.getAsistencias(), g1.getAsistencias()));
+		   
+		   return asistidores;
+		   
+	   }  
 }
